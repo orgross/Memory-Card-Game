@@ -56,7 +56,7 @@ class CardGame
 
         if (player != null)
         {
-            Console.WriteLine($"Welcome back, {player.Username}!");
+            Console.WriteLine($"Welcome back {player.Username}!");
             PlayGame(player);
         }
         else
@@ -67,7 +67,7 @@ class CardGame
 
     static void Signup()
     {
-        Console.Write("Enter your desired username: ");
+        Console.Write("Enter your username: ");
         string username = Console.ReadLine();
 
         Player player = players.Find(p => p.Username == username);
@@ -76,12 +76,12 @@ class CardGame
         {
             player = new Player { Username = username, Points = 0 };
             players.Add(player);
-            Console.WriteLine($"Signup successful. Welcome, {player.Username}!");
+            Console.WriteLine($"Welcome {player.Username}!");
             PlayGame(player);
         }
         else
         {
-            Console.WriteLine("Username already exists. Please choose a different username.");
+            Console.WriteLine("Username already exists.");
         }
     }
 
@@ -89,21 +89,16 @@ class CardGame
     {
         Console.WriteLine($"You currently have {player.Points} points.");
 
-        // Memory game logic
         Console.WriteLine("Starting Memory Game...");
 
-        // Generate a sequence of random numbers
         List<int> sequence = GenerateRandomSequence(3);
 
-        // Display the sequence to the player
         Console.WriteLine("Memorize the sequence:");
         DisplaySequence(sequence);
-        Thread.Sleep(3000); // Pause for 3 seconds
+        Thread.Sleep(5000);
 
-        // Clear the console
         Console.Clear();
 
-        // Get player input and check if it matches the sequence
         bool isCorrect = GetPlayerInputAndCheck(sequence);
 
         if (isCorrect)
@@ -137,7 +132,7 @@ class CardGame
         foreach (int number in sequence)
         {
             Console.Write(number + " ");
-            Thread.Sleep(1000); // Pause for 1 second between numbers
+            Thread.Sleep(500);
         }
         Console.WriteLine();
     }
